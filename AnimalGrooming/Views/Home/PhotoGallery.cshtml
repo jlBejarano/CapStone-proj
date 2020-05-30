@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "PhotoGallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>PhotoGallery</h1>
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <div class="container">
+
+        <div class="mySlides">
+            <div class="numbertext">
+                1 /
+                6
+            </div>
+
+            <img src="~/Images/before-and-after-grooming.jpg"
+                 style="width:100%" />
+
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">
+                2 /
+                6
+            </div>
+            <img src="~/Images/dog-grooming-cover.jpg"
+                 style="width:100%" />
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">
+                3/
+                6
+            </div>
+            <img src="~/Images/beforeafter.jpg"
+                 style="width:100%" />
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">
+                4 /
+                6
+            </div>
+            <img src="~/Images/LaborDoodle.jpg"
+                 style="width:100%" />
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">
+                5 /
+                6
+            </div>
+            <img src="~/Images/ShihTzu.jpg"
+                 style="width:100%" />
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">
+                6 /
+                6
+            </div>
+            <img src="~/Images/OldMan.jpg"
+                 style="width:100%" />
+        </div>
+
+        <a class="prev"
+           onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next"
+           onclick="plusSlides(1)">&#10095;</a>
+
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <img class="demo cursor"
+                     src="~/Images/before-and-after-grooming.jpg" style="width:100%"
+                     onclick="currentSlide(1)" alt="Before&After" />
+            </div>
+
+
+            <div class="column">
+                <img class="demo cursor"
+                     src="~/Images/dog-grooming-cover.jpg"
+                     style="width:100%"
+                     onclick="currentSlide(2)" alt="Before&After" />
+            </div>
+
+            <div class="column">
+                <img class="demo cursor"
+                     src="~/Images/beforeafter.jpg"
+                     style="width:100%"
+                     onclick="currentSlide(3)" alt="Before&After" />
+            </div>
+
+            <div class="column">
+                <img class="demo cursor"
+                     src="~/Images/LaborDoodle.jpg"
+                     style="width:100%"
+                     onclick="currentSlide(4)" alt="Before&After" />
+            </div>
+
+            <div class="column">
+                <img class="demo cursor"
+                     src="~/Images/ShihTzu.jpg"
+                     style="width:100%"
+                     onclick="currentSlide(5)" alt="Before&After" />
+            </div>
+
+            <div class="column">
+                <img class="demo cursor"
+                     src="~/Images/OldMan.jpg"
+                     style="width:100%"
+                     onclick="currentSlide(6)" alt="Before&After" />
+            </div>
+
+        </div>
+    </div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+

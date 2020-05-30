@@ -11,12 +11,13 @@ namespace AnimalGrooming.ActionFilters
     public class GlobalRouting : IActionFilter
     {
         private readonly ClaimsPrincipal _claimsPrincipal;
+
         public GlobalRouting(ClaimsPrincipal claimsPrincipal)
         {
             _claimsPrincipal = claimsPrincipal;
         }
 
-        public void OnActionExecting(ActionExecutingContext context)
+        public void OnActionExecuting(ActionExecutingContext context)
         {
             var controller = context.RouteData.Values["controller"];
             if (controller.Equals("Home"))
@@ -35,11 +36,6 @@ namespace AnimalGrooming.ActionFilters
         public void OnActionExecuted(ActionExecutedContext context)
         {
 
-        }
-
-        public void OnActionExecuting(ActionExecutingContext context)
-        {
-            //throw new NotImplementedException();
         }
     }
 }

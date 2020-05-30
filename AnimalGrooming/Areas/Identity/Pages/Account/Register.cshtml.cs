@@ -112,7 +112,7 @@ namespace AnimalGrooming.Areas.Identity.Pages.Account
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     if (Input.Role.Equals("Customer"))
                     {
-                        return RedirectToAction("Creat", "Customers");
+                        return RedirectToAction("Create", "Customers");
                     }
                     else
                     {

@@ -28,7 +28,7 @@ namespace AnimalGrooming.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             var applicationDbContext = _context.Customers.Include(c => c.IdentityUser);
-            return View("Create");
+            return View(customer);
         }
 
         // GET: Customers/Details/5
@@ -58,7 +58,7 @@ namespace AnimalGrooming.Controllers
         // POST: Customers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId, CustomerName, CustomerAddress, CustomerCity, CustomerState, CustomerZipCode, IdentityUserId")] Customer customer)
+        public async Task<IActionResult> Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
