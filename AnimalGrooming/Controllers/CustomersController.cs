@@ -25,7 +25,7 @@ namespace AnimalGrooming.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             var applicationDbContext = _context.Customers.Include(c => c.IdentityUser);
             return View(customer);
@@ -58,7 +58,7 @@ namespace AnimalGrooming.Controllers
         // POST: Customers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,Name,ZipCode,City,Address")]Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -158,6 +158,24 @@ namespace AnimalGrooming.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+       // [HttpPost]
+       // [ValidateAntiForgeryToken]
+       // public async Task<IActionResult> CreateReview(Review review)
+       // {
+           // try
+           // {
+           //     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //    Customer customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            //    review.CustomerId = customer.CustomerId;
+
+           //     using (var httpClient = new HttpClient())
+              //  {
+             //       StringContent content = new StringContent(JsonConvert.SerializeObject(review),
+              //          using (var response = await httpClient.PostAsync("")))
+              //  }
+           // }
+       //}
         
     }
 }

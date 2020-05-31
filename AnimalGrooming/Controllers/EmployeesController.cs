@@ -56,7 +56,7 @@ namespace AnimalGrooming.Controllers
         // POST: Employees/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId, EmployeeName, EmployeeZipCode, IdentityUserId")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeId, EmployeeName, EmployeeZipCode")] Employee employee)
         {
 
             // TODO: Add insert logic here
