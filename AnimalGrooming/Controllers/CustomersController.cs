@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using AnimalGrooming.Data;
 using AnimalGrooming.Models;
@@ -10,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace AnimalGrooming.Controllers
 {
@@ -159,23 +163,36 @@ namespace AnimalGrooming.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       // [HttpPost]
-       // [ValidateAntiForgeryToken]
-       // public async Task<IActionResult> CreateReview(Review review)
-       // {
-           // try
-           // {
-           //     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //    Customer customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            //    review.CustomerId = customer.CustomerId;
+        public IActionResult CreateReview(int customerId)
+        {
+            ViewBag.CustomerId = customerId;
+            return View();
+        }
 
-           //     using (var httpClient = new HttpClient())
-              //  {
-             //       StringContent content = new StringContent(JsonConvert.SerializeObject(review),
-              //          using (var response = await httpClient.PostAsync("")))
-              //  }
-           // }
-       //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateReview(Review review)
+        {
+            try
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                Customer customer = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+                review.CustomerId = customer.CustomerId;
+
+                using (var httpClient = new HttpClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(review), Encoding.UTF8, "application/json");
+                    using (var response = await httpClient.PostAsync("http://localhost:44364/animalgrooming/reviews", content)) ;
+                }
+                return RedirectToAction("ViewReviews", new { customerId = review.CustomerId });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
         
     }
 }

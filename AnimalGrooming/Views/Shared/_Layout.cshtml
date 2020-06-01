@@ -9,7 +9,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-info border-bottom box-shadow mb-3">
+            <a class="navbar-brand" href="#" style="max-width:15%">
+                <img src="~/Images/TheBarkberShop.png" class="img-fluid" />
+            </a>
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AnimalGrooming</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -26,6 +29,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Services">Services</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PhotoGallery">PhotoGallery</a>
                         </li>
                         <li class="nav-item">
@@ -37,15 +43,7 @@
 
 
             </div>
-            <div id="mySidenav" class="sidenav">
-                <a href="#" id="about">About</a>
-                
-                <a href="#" id="services">Services</a>
-                <a href="#" id="contact">Contact</a>
-
-
-            </div>
-
+           
 
         </nav>
     </header>

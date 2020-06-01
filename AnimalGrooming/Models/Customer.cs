@@ -16,6 +16,7 @@ namespace AnimalGrooming.Models
         public int CustomerZipCode { get; set; }
         public string CustomerCity { get; set; }
         public string CustomerAddress { get; set; }
+        public List<Review> Reviews { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
