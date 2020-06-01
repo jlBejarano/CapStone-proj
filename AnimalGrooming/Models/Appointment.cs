@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalGrooming.Models
 {
-    public class Appointments
+    public class Appointment
     {
         [Key]
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AnimalGrooming.Models;
+using AnimalGrooming.Data;
 
 namespace AnimalGrooming.Controllers
 {
@@ -39,6 +40,11 @@ namespace AnimalGrooming.Controllers
         {
             return View();
         }
+        public IActionResult EmployeeCalender()
+        {
+            return View();
+        }
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

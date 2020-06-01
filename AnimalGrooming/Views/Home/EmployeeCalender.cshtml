@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "EmployeeCalender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EmployeeCalender</h1>
+
+<div id="calendar"></div>
+
+<link href="//cdnjs.cloudfare.com/ajax/libs/fullcalender/3.4.0/fullcalender.min.css" rel="stylesheet"/>
+<link href="//cdnjs.cloudfare.com/ajax/libs/fullcalender/3.4.0/fullcalender.print.css" rel="stylesheet" media="print" />
+
+@section Scripts{ 
+    <script src="http://cdnjs.cloudfare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudfare.com/ajax/libs/fullcalender/3.4.0/fullcalender.min.js"></script>
+
+<script>
+    $(document.ready(function () {
+        var appointments = [];
+        $.ajax({
+            type: "GET",
+            url "/home/GetAppointments",
+            success: function (data) {
+                $.each(data, function (i, v) {
+                    appointments.push({
+                        title: v.Subject,
+                        description: v.Description,
+                        start: moment(v.Start),
+                        end: v.end != null ? moment(v.End) : null,
+                        color: v.ThemeColor,
+                        allday: v.IsFullDay
+                    });
+                })
+
+                GenerateCalender(appointments);
+            },
+            error: function (error) {
+                alert('failed');
+            }
+        })
+        function GenerateCalender(appointments) {
+            $('#calender').fullcalender('destroy');
+            $('#calender').fullcalender({
+                contentHeight: 400,
+                defaultDate: newDate(),
+                timeFormat: 'h(:mm)a',
+                header: {
+                    left: 'prev,next today'
+                    center: 'title',
+                    right: 'month,basicweek,basicDay,agenda'
+                },
+                eventLimit: true,
+                eventColor: '#378006',
+                appointments: appointments
+            })
+        }
+    })
+</script>
+}
