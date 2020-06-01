@@ -6,55 +6,115 @@
 
 <h1>EmployeeCalender</h1>
 
-<div id="calendar"></div>
+<div class="month">
+    <ul>
+        <li class="prev">&#10094;</li>
+        <li class="next">&#10095;</li>
+        <li>
+            August<br>
+            <span style="font-size:18px">2020</span>
+        </li>
+      
+    </ul>
+</div>
+<ul class="weekdays">
+    <li>Mo</li>
+    <li>Tu</li>
+    <li>We</li>
+    <li>Th</li>
+    <li>Fr</li>
+    <li>Sa</li>
+    <li>Su</li>
+</ul>
 
-<link href="//cdnjs.cloudfare.com/ajax/libs/fullcalender/3.4.0/fullcalender.min.css" rel="stylesheet"/>
-<link href="//cdnjs.cloudfare.com/ajax/libs/fullcalender/3.4.0/fullcalender.print.css" rel="stylesheet" media="print" />
+<ul class="days">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li><span class="active">10</span></li>
+    <li>11</li>
+    <li>12</li>
+    <li>13</li>
+    <li>14</li>
+    <li>15</li>
+    <li>16</li>
+    <li>17</li>
+    <li>18</li>
+    <li>19</li>
+    <li>20</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>24</li>
+    <li>25</li>
+    <li>26</li>
+    <li>27</li>
+    <li>28</li>
+    <li>29</li>
+    <li>30</li>
+    <li>31</li>
+</ul>
+<style>
+    {box-sizing:border-box;}
+    ul{list-style-type:none;}
+    body{font-family:Verdana,sans-seriff;}
 
-@section Scripts{ 
-    <script src="http://cdnjs.cloudfare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="//cdnjs.cloudfare.com/ajax/libs/fullcalender/3.4.0/fullcalender.min.js"></script>
+    .month{
+        padding:70px 25px;
+        width:100%;
+        background: #808080;
+        text-align:center;
+    }
 
-<script>
-    $(document.ready(function () {
-        var appointments = [];
-        $.ajax({
-            type: "GET",
-            url "/home/GetAppointments",
-            success: function (data) {
-                $.each(data, function (i, v) {
-                    appointments.push({
-                        title: v.Subject,
-                        description: v.Description,
-                        start: moment(v.Start),
-                        end: v.end != null ? moment(v.End) : null,
-                        color: v.ThemeColor,
-                        allday: v.IsFullDay
-                    });
-                })
+    .month ul {
+        margin:0;
+        padding:0;
+    }
 
-                GenerateCalender(appointments);
-            },
-            error: function (error) {
-                alert('failed');
-            }
-        })
-        function GenerateCalender(appointments) {
-            $('#calender').fullcalender('destroy');
-            $('#calender').fullcalender({
-                contentHeight: 400,
-                defaultDate: newDate(),
-                timeFormat: 'h(:mm)a',
-                header: {
-                    left: 'prev,next today'
-                    center: 'title',
-                    right: 'month,basicweek,basicDay,agenda'
-                },
-                eventLimit: true,
-                eventColor: '#378006',
-                appointments: appointments
-            })
-        }
-    })
-</script>
-}
+    .month ul li{
+        color: white;
+        font-size:20px;
+        text-transform: uppercase;
+        letter-spacing:3px;
+    }
+
+    .month .next {
+        float: right;
+        padding-top: 10px;
+    }
+
+    .weekdays {
+        margin: 0;
+        padding: 10px 0;
+        background-color: #ff006e;
+    }
+    .weekdays li {
+        display: inline-block;
+        width: 13.6%;
+        color: #808080;
+        text-align: center;
+    }
+
+    .days li {
+        list-style-type: none;
+        display: inline-block;
+        width:13.6%;
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 12px;
+        color: #777;
+    }
+
+    .days li .active{
+        padding:5px;
+        background: #labc9c;
+        color: aquamarine;
+    }
+
+</style>
